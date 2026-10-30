@@ -361,7 +361,8 @@ export default function App() {
         {view === "vehicle" && car && (
           <>
             <button type="button" className="link back" onClick={() => setView("home")}>← Back</button>
-            <section className="card">
+            <section className="card answer glow" aria-live="polite">
+              <p className="answer-tag">👉 Your answer</p>
               <h1>{carName(car)}</h1>
               {car.vin && <p className="muted small">VIN {car.vin}</p>}
               <p className={recalls.length ? "count count-open" : "count count-none"}>

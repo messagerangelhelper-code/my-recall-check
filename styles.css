@@ -184,3 +184,22 @@ select:disabled { background: #f3f4f6; color: var(--muted); }
 .garage .link.danger { align-self: flex-end; padding: 2px 4px; }
 .history ol { margin-bottom: 12px; }
 .history li { margin-bottom: 10px; }
+
+/* Answer highlighting: make the result easy to spot */
+.answer {
+  background: #fffbe8 !important; border: 3px solid #f2b705 !important; border-radius: 18px; padding: 14px;
+  box-shadow: 0 4px 14px rgba(242, 183, 5, 0.25); scroll-margin-top: 72px;
+}
+.answer > * + * { margin-top: 10px; }
+.answer-tag {
+  display: inline-block; margin: 0; background: #f2b705; color: #3a2a00; font-weight: 900;
+  border-radius: 999px; padding: 4px 12px; font-size: 0.95rem;
+}
+.answer.glow { animation: answer-glow 1.6s ease-out 1; }
+@keyframes answer-glow {
+  0% { box-shadow: 0 0 0 0 rgba(242, 183, 5, 0.9); }
+  40% { box-shadow: 0 0 0 12px rgba(242, 183, 5, 0.25); }
+  100% { box-shadow: 0 4px 14px rgba(242, 183, 5, 0.25); }
+}
+@media (prefers-reduced-motion: reduce) { .answer.glow { animation: none; } }
+h2.hl { background: #fffbe8; border-left: 6px solid #f2b705; border-radius: 8px; padding: 8px 10px; }
