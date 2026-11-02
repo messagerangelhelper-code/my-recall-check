@@ -9,6 +9,14 @@ const APP = "recallcheck";
 const KEY = "mrc-premium";
 const RECHECK_MS = 3 * 24 * 60 * 60 * 1000;
 
+// CashCow All Access: Premium in every CashCow app, including ScamShield Premium.
+// Needs a signed-in CashCow account, so it can unlock every app you sign in to.
+export const ALL_ACCESS = [
+  { id: "rent", label: "Monthly", price: "$29", per: "/month" },
+  { id: "lease", label: "Yearly", price: "$249", per: "/year", note: "Save 28%" },
+  { id: "buy", label: "Lifetime", price: "$499", per: "one time", note: "Pay once" },
+];
+
 export const PLANS = [
   { id: "mrc_monthly", label: "Monthly", price: "$1.99", per: "/month" },
   { id: "mrc_yearly", label: "Yearly", price: "$14.99", per: "/year", note: "Save 37%", best: true },
@@ -149,7 +157,7 @@ export async function startCheckout(planId) {
     res = await fetch(`${API}/api/create-checkout-session`, {
       method: "POST",
       headers: { "Content-Type": "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-      body: JSON.stringify({ plan: planId }),
+      body: JSON.stringify({ plan: planId, return_app: APP }),
     });
   } catch {
     throw new Error("Couldn't reach checkout. Check your connection and try again.");

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PLANS, PREMIUM_FEATURES, PREMIUM_THANKS, PREMIUM_FREE_NOTE, startCheckout } from "./premium.js";
+import { ALL_ACCESS, PLANS, PREMIUM_FEATURES, PREMIUM_THANKS, PREMIUM_FREE_NOTE, startCheckout } from "./premium.js";
 
 // Plans and upgrade buttons. Payment happens on Stripe's secure checkout page.
 export default function Premium({ premium, onBack }) {
@@ -47,6 +47,24 @@ export default function Premium({ premium, onBack }) {
             </button>
           </div>
         ))}
+      </div>
+      <div className="all-access">
+        <h3>⭐ Or get CashCow All Access</h3>
+        <p className="muted small">Premium in every CashCow app you sign in to, including ScamShield Premium with Email Guard, plus every new app we launch. Sign in to your CashCow account first, then choose a plan.</p>
+        <div className="plans">
+          {ALL_ACCESS.map((p) => (
+            <div key={p.id} className="plan">
+              <div>
+                <strong>{p.label}</strong>
+                {p.note && <span className="plan-note">{p.note}</span>}
+                <p className="plan-price">{p.price} <span className="muted small">{p.per}</span></p>
+              </div>
+              <button type="button" className="btn-secondary" disabled={!!busy} onClick={() => buy(p.id)}>
+                {busy === p.id ? "Opening…" : "Choose"}
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
       {busy && <p className="muted small">Opening secure checkout. The first time can take up to a minute.</p>}
       {error && <p className="error">{error}</p>}

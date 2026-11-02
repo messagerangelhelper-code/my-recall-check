@@ -203,3 +203,7 @@ select:disabled { background: #f3f4f6; color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) { .answer.glow { animation: none; } }
 h2.hl { background: #fffbe8; border-left: 6px solid #f2b705; border-radius: 8px; padding: 8px 10px; }
+
+/* CashCow All Access option on the Premium page */
+.all-access { margin-top: 16px; padding-top: 14px; border-top: 1px dashed currentColor; border-top-color: rgba(127,127,127,.35); }
+.all-access h3 { margin: 0 0 4px; font-size: 1.05rem; }
